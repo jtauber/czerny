@@ -1,0 +1,6 @@
+Run ./process_hanon_21.py to align score and performance of Hanon's 21st
+exercise.
+
+Doesn't do anything else yet.
+
+align.py is an implementation of the Needlman-Wunsch alignment algorithm.

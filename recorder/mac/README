@@ -1,0 +1,4 @@
+1. install pyrex (pip install pyrex worked fine for me)
+2. run ./make_coremidi.sh
+
+You now have a CoreMIDI.so file that midi_in.py can use.

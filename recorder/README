@@ -1,0 +1,2 @@
+Once you've built the CoreMIDI support (see mac/README), run ./midi_in.py
+with a MIDI keyboard attached and play to see events written to stdout.

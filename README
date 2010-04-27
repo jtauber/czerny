@@ -1,0 +1,34 @@
+Czerny
+
+This is a super-early-prototype of a super-experimental tool for assessing
+the performance of piano exercises. It is written in Python.
+
+The basic idea is:
+
+ 1. record a performance of the exercise as MIDI (or similar) events
+ 2. align the performed notes with the "score" notes
+ 3. identify errors as well as fluctuations in timing, velocity, etc
+
+The first two items are at a very early prototype stage. The third has not
+yet been started on.
+
+
+The recorder directory has a pyrex wrapper around OS X's Core MIDI library and 
+a Python script for outputting events coming in from a MIDI keyboard.
+
+The examples directory has some initial recordings and the "score" for the
+right hand of Hanon's 21st exercise (as well the Python code for generating
+this "score")
+
+The prototypes directory has an implementation of the Needleman-Wunsch
+alignment algorithm and a script for using it to process a performance and
+score of Hanon's 21st exercise.
+
+
+Czerny is a sister project to Sebastian. Where Sebastian is about analyzing
+and producing compositions, Czerny is about analyzing performances (especially 
+of keyboard exercises).
+
+
+James Tauber
+jtauber@jtauber.com
