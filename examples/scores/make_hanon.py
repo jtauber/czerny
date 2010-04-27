@@ -25,14 +25,14 @@ scale = [0, 2, 4, 5, 7, 9, 11]
 full_scale = scale + [12 + i for i in scale] + [24 + i for i in scale]
 
 sections = [
-    (A_notes, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),
-    (B_notes, [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]),
-    (C_notes, [0]),
-    (D_notes, [0])
+    (A_notes, 4, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]),
+    (B_notes, 4, [13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]),
+    (C_notes, 4, [0]),
+    (D_notes, 32, [0])
 ]
 
 for section in sections:
-    pattern, offset = section
+    pattern, duration_64, offset = section
     for o in offset:
         for note in pattern:
-            print 48 + full_scale[note + o - 1]
+            print 48 + full_scale[note + o - 1], duration_64

@@ -8,9 +8,10 @@ from align import nw_align
 score = []
 
 for line in open("../examples/scores/hanon_21_rh.txt"):
-    note = line.strip()
+    note, duration_64 = line.strip().split()
     note = int(note)
-    score.append(note)
+    duration_64 = int(duration_64)
+    score.append((note, duration_64))
 
 
 # load the performance
@@ -52,9 +53,9 @@ def note_similarity(score_note, performance_note):
     
     # over time this can be tweaked to include velocity, duration, etc
     
-    if score_note == performance_note[1]:
+    if score_note[0] == performance_note[1]:
         return 1
-    elif abs(score_note - performance_note[1]) < 3:
+    elif abs(score_note[0] - performance_note[1]) < 3:
         return 0.5
     else:
         return 0
