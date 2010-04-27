@@ -17,6 +17,9 @@ for line in open("../examples/scores/hanon_21_rh.txt"):
 
 performance = []
 
+# dictionary mapping pitch to offset and velocity of event when that pitch was started
+note_started = {}
+
 for line in open("../examples/recordings/hanon_21_rh.txt"):
     offset, note, velocity = line.strip().split()
     offset = int(float(offset) * 1000000)
@@ -24,7 +27,21 @@ for line in open("../examples/recordings/hanon_21_rh.txt"):
     velocity = int(velocity)
     
     if velocity > 0:
-        performance.append((offset, note, velocity))
+        if note in note_started:
+            # new note at that pitch started before previous finished
+            # not sure it should happen but let's handle it anyway
+            (start_offset, start_velocity) = note_started.pop(note)
+            duration = offset - start_offset
+            performance.append((start_offset, note, start_velocity, duration))
+        note_started[note] = (offset, velocity)
+    else: # note end
+        if note not in note_started:
+            # note was never started so ignore
+            pass
+        else:
+            (start_offset, start_velocity) = note_started.pop(note)
+            duration = offset - start_offset
+            performance.append((start_offset, note, start_velocity, duration))
 
 
 # similarity measure used by Needleman-Wunsch algorithm
