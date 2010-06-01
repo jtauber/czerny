@@ -1,4 +1,4 @@
 make_hanon.py can be used to create the "score" for the right hand of
 Hanon's 21st exercise.
 
-Just run ./make_hanon.py > hanon_21_rh.txt
+Just run ./make_hanon.py which will create hanon_21_rh.txt

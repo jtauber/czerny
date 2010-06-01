@@ -31,8 +31,12 @@ sections = [
     (D_notes, 32, [0])
 ]
 
+f = open("hanon_21_rh.txt", "w")
+
 for section in sections:
     pattern, duration_64, offset = section
     for o in offset:
         for note in pattern:
-            print 48 + full_scale[note + o - 1], duration_64
+            print >>f, 48 + full_scale[note + o - 1], duration_64
+
+f.close()
