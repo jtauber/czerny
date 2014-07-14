@@ -6,6 +6,7 @@ import time
 # all times will be offset from when we started this script
 start = time.time()
 
+
 # handle MIDI event callback
 def callback(event):
     # only worry about event type 156

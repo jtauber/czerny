@@ -20,7 +20,8 @@ def load_performance(filename):
 
     performance = []
 
-    # dictionary mapping pitch to offset and velocity of event when that pitch was started
+    # dictionary mapping pitch to offset and velocity of event when that pitch
+    # was started
     note_started = {}
 
     for line in open(filename):
@@ -35,16 +36,18 @@ def load_performance(filename):
                 # not sure it should happen but let's handle it anyway
                 (start_offset, start_velocity) = note_started.pop(note)
                 duration = offset - start_offset
-                performance.append((start_offset, note, start_velocity, duration))
+                performance.append(
+                    (start_offset, note, start_velocity, duration))
             note_started[note] = (offset, velocity)
-        else: # note end
+        else:  # note end
             if note not in note_started:
                 # note was never started so ignore
                 pass
             else:
                 (start_offset, start_velocity) = note_started.pop(note)
                 duration = offset - start_offset
-                performance.append((start_offset, note, start_velocity, duration))
+                performance.append(
+                    (start_offset, note, start_velocity, duration))
 
     return performance
 

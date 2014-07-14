@@ -32,7 +32,7 @@ def nw_align(a, b, replace_func, insert, delete):
         elif matrix[i][j][1] == LEFT:
             alignment.insert(0, (None, b[j - 1]))
             j -= 1
-        else: # UP
+        else:  # UP
             alignment.insert(0, (a[i - 1], None))
             i -= 1
 
